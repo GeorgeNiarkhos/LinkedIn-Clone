@@ -1,0 +1,45 @@
+<div class="container" >
+
+  <div class="row" *ngIf="atLeastOne">
+
+    <div class="tab1 col-sm-3 col-lg-3 col-md-3">
+
+      <ul class="list-unstyled contacts">
+
+        <!-- side contacts -->
+        <li class="pointer" *ngFor="let chat of chats">
+          <div class="p-3" (click)="selectChat(chat.id)" [ngClass]="{'bg-primary text-light': chat.id == selectedChat}">
+              <a class="h4 text-center">{{chat.user1}} / {{chat.user2}}</a>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- messages tab -->
+    <div class="tab2 col-md-9 col-sm-9 col-lg-9"  style="background-color:white;">
+      <ul class="list-group-item-secondary">
+
+        <li class="list-group-item" *ngFor="let message of messages">
+          <strong>{{message.sender}}</strong> : {{message.content}}
+        </li>
+      </ul>
+      
+
+      <form #f="ngForm" (ngSubmit)="sendMessage(f)" class="form-group">
+            <textarea name="message" id="message" cols="80" rows="4" style="resize:none;" class="p-1 form-control my-1" placeholder="Type a message" ngModel></textarea>
+            <button class="btn btn-primary form-control">Send</button>
+      </form>
+    </div>
+
+  </div>
+
+  <div *ngIf="!atLeastOne" class="alert alert-info" >
+    <i class="material-icons">
+        warning
+    </i>
+    <p class="">Sorry, you have no conversations. Try starting a chat from a user profile page.</p>
+  </div>
+
+</div>

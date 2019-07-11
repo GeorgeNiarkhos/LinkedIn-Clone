@@ -1,0 +1,30 @@
+<div>
+    <h1 class="display-4">Search Network</h1>
+        <div class="form-group form-inline">
+            <input type="text" class="input-sm form-control" maxlength="64" placeholder="Search" [(ngModel)]="searchText" >
+            <button class="btn btn-primary" (click)="searchNetwork()">Search</button>
+        </div>
+    
+    
+    <hr>
+
+
+</div>
+
+
+<div class="container">
+  
+  <div *ngFor="let user of users" class="col-md-4 card pointer">
+    <div class="card-body text-center" routerLink="/profile/{{user.email}}">
+      <div class="card-title">
+        {{user.name}}
+      </div>
+      <div class="card-text">
+        <p class="text-muted"> {{user.email}} </p>
+      </div>
+    </div>
+    <!-- {{user.name}} -->
+  </div>
+
+  <!-- end of wrapper -->
+</div> 

@@ -1,0 +1,81 @@
+
+<div class="container-fluid gedf-wrapper">
+
+    <div class="row">
+
+        <div class="col-md-3 col-xs-12">
+            <div class="card" *ngIf="user">
+                <div class="card-body text-center">
+                    <h2><a routerLink="/profile/{{user.email}}">{{user.name}} </a></h2>
+                    <hr>
+                    <p class="text-muted">{{user.email}}</p>
+                    <p class="text-muted">{{user.phone}}</p>
+                    <p class="text-muted">{{user.workExperience}}</p>
+                    <hr>
+                    <p class="text-muted">Friends</p>
+                    <a routerLink="/network">{{friends}}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-xs-12 gedf-main">
+
+            <div class="card mb-5">
+                <div class="card-header">
+                    <h2>New Post</h2>
+                </div>
+                <div class="card-body">
+                    <form #f="ngForm" (ngSubmit)="newPost(f)">
+                        <textarea rows="5" id="content" name="content" class="d-block col-md-12 mb-3" placeholder="What's on your mind?" ngModel></textarea>
+                        <button type="submit" class="d-block btn btn-primary">Post</button>
+                    </form>
+                </div>
+            </div>
+        
+            
+                <div *ngFor="let post of posts">
+
+                    <div class="card mb-5">
+                        <div class="card-header">
+                            <a routerLink="/profile/{{post.email}}">{{post.email}}</a><span class="text-muted"> posted</span>
+                        </div>
+        
+                        <div class="card-body">
+                            {{post.content}}
+                        </div>
+        
+                        <div class="card-footer">
+
+                            <p class="text-muted">{{post.likes}} people <strong>like</strong> this</p>
+                            <a (click)="likePost(post)" class="card-link bg-primary text-light p-2 rounded-top">Like</a>
+                            <a (click)="showMore(post)" class="card-link bg-primary text-light p-2 rounded-top">Comment</a>
+
+                            <div class="more py-4" *ngIf="post.id == moreInfo"> 
+                                <hr>
+                                <div class="comment" *ngFor="let comment of comments">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div class="card-text">
+                                                <a routerLink="/profile/{{comment.email}}">{{comment.email}}</a> : {{comment.comment}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form #f="ngForm" (ngSubmit)="commentPost(post,f)">
+                                    <textarea name="comment" id="comment" rows="3" style="resize:none; width:100%;" class="p-2 m-3" ngModel autofocus></textarea>
+                                    <button class="btn btn-primary btn-block">Comment</button>
+                                </form>
+                            
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+            
+
+        </div>
+            
+    </div>
+
+</div>

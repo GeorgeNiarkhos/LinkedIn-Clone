@@ -1,0 +1,44 @@
+<div *ngIf="all">
+    <nav>
+    <a routerLink="/jobs" class="bg-primary text-light mx-2">Marketplace</a>
+    <a routerLink="/myjobs" class="bg-primary text-light mx-2">My Jobs</a>
+    </nav>
+    <hr>
+
+        <div *ngFor="let job of jobs" class="card my-2 pointer">
+            <div (click)="selectJob(job)" class="card-body">
+                <a>
+                <h2 class="card-title text-primary">{{job.title}}</h2>
+                <hr>
+                <p class="card-text">{{job.description}}</p>
+                </a>
+            </div>
+        </div>
+</div>
+
+
+<div *ngIf="!all">
+    <nav>
+        <a (click)="all = true" class="bg-primary text-light mx-2">Back to market</a>
+    </nav>
+
+    <hr>
+    <h1 class="display-3">Submit application for</h1>
+    <hr>
+    <h2>{{selected.title}}</h2>
+    <hr>
+    <p>{{selected.description}}</p>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <form #f="ngForm" (ngSubmit)="submitApplication(f,selected)">
+                <fieldset>
+                    <input type="text" id="email" name="email" class="d-block col-md-6 mb-3" placeholder="Email" [(ngModel)]="user.email" readonly> 
+                    <textarea rows="5" id="message" name="message" class="d-block col-md-12 mb-3" placeholder="Your Message here" ngModel></textarea>
+                    <button type="submit" class="d-block btn btn-primary">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>

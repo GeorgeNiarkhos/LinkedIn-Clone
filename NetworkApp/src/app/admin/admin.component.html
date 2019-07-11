@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>User List</h2>
+  <button class="btn btn-primary" (click)="downloadXml()">Export XML</button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>WorkExperience</th>
+        <th>Education</th>
+        <th>Skills</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.workExperience}}</td>
+        <td>{{user.eduExperience}}</td>
+        <td>{{user.skills}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

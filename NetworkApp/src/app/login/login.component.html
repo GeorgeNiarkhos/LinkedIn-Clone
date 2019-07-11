@@ -1,0 +1,40 @@
+<!-- <div class="fullform">
+  <h2>Welcome to Network!</h2>
+
+  <div class="form">
+
+      <h2>Login</h2>
+
+      <form  #f="ngForm" (ngSubmit)="onLogin(f)">
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" ngModel required email >
+      
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" ngModel required >
+        
+        <button type="submit">Sign in</button>
+        <a routerLink="/register"><p>Don't have an account? Register </p></a>
+
+      </form>
+      
+  </div>
+  </div> -->
+
+      <form class="form-signin text-center mt-5" #f="ngForm" (ngSubmit)="onLogin(f)">
+          <i class="material-icons">
+              account_box
+              </i>
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" name="email" id="email" ngModel required email class="form-control" placeholder="Email address" autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="password" ngModel required class="form-control" placeholder="Password" >
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <a routerLink="/register"><p>Don't have an account? Register </p></a>
+        <div class="alert alert-danger" *ngIf="!validInfo">
+            Wrong credentials! Try again.
+          </div>
+      </form>
+    
+  

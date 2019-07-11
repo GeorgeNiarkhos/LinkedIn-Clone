@@ -1,0 +1,29 @@
+<h1>Notifications</h1>
+<hr>
+
+
+<div id="requests">
+
+  <div *ngFor="let relationship of relationships" class="card">
+    <div class="card-body">
+        {{relationship.actionUserEmail}}
+        <button class="btn btn-primary mx-4" (click)="acceptRequest(relationship)">Accept</button>
+        <button class="btn btn-outline-primary mx-2" (click)="declineRequest(relationship)">Decline</button>
+    </div>
+  </div>
+
+</div>
+
+<hr class="py-2">
+
+<div id="notifications">
+
+  <div *ngFor="let notification of notifications">
+
+    <div class="alert alert-info">
+        {{notification.message}}
+    </div>
+    
+  </div>
+
+</div>
